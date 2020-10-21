@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-Ning-Expense/Pods-Ning-Expense-frameworks.sh
+${BUILT_PRODUCTS_DIR}/PNChart/PNChart.framework
+${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
+${BUILT_PRODUCTS_DIR}/UICountingLabel/UICountingLabel.framework

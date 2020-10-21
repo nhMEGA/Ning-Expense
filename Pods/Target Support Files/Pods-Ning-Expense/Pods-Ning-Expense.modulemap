@@ -1,0 +1,6 @@
+framework module Pods_Ning_Expense {
+  umbrella header "Pods-Ning-Expense-umbrella.h"
+
+  export *
+  module * { export * }
+}
