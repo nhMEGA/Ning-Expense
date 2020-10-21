@@ -18,6 +18,9 @@
 		0D22AB492538F90F0079F9E6 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D22AB482538F90F0079F9E6 /* Transaction.swift */; };
 		0D22AB4C2538F9590079F9E6 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D22AB4B2538F9590079F9E6 /* Category.swift */; };
 		0D53D935253951D500B34B77 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D53D934253951D500B34B77 /* CurrencyConverter.swift */; };
+		0DBDAFC9253FAFFD00D3F838 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0DBDAFC8253FAFFD00D3F838 /* README.md */; };
+		0DBDAFCC253FB84200D3F838 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0DBDAFCB253FB84200D3F838 /* .gitignore */; };
+		0DBDAFD0253FBA9800D3F838 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDAFCF253FBA9800D3F838 /* Settings.swift */; };
 		0DCE2687253935EF009E63C3 /* EditTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2686253935EF009E63C3 /* EditTransactionViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +38,9 @@
 		0D22AB482538F90F0079F9E6 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		0D22AB4B2538F9590079F9E6 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		0D53D934253951D500B34B77 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
+		0DBDAFC8253FAFFD00D3F838 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		0DBDAFCB253FB84200D3F838 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		0DBDAFCF253FBA9800D3F838 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0DCE2686253935EF009E63C3 /* EditTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTransactionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -52,6 +58,8 @@
 		0D22AB122538E7E50079F9E6 = {
 			isa = PBXGroup;
 			children = (
+				0DBDAFCB253FB84200D3F838 /* .gitignore */,
+				0DBDAFC8253FAFFD00D3F838 /* README.md */,
 				0D22AB1D2538E7E50079F9E6 /* Ning-Expense */,
 				0D22AB1C2538E7E50079F9E6 /* Products */,
 			);
@@ -68,6 +76,7 @@
 		0D22AB1D2538E7E50079F9E6 /* Ning-Expense */ = {
 			isa = PBXGroup;
 			children = (
+				0DBDAFCE253FB87B00D3F838 /* xcuserdata */,
 				0D22AB462538F8EB0079F9E6 /* Models */,
 				0D22AB1E2538E7E50079F9E6 /* AppDelegate.swift */,
 				0D22AB202538E7E50079F9E6 /* SceneDelegate.swift */,
@@ -115,6 +124,14 @@
 				0D53D934253951D500B34B77 /* CurrencyConverter.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		0DBDAFCE253FB87B00D3F838 /* xcuserdata */ = {
+			isa = PBXGroup;
+			children = (
+				0DBDAFCF253FBA9800D3F838 /* Settings.swift */,
+			);
+			path = xcuserdata;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,8 +191,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DBDAFCC253FB84200D3F838 /* .gitignore in Resources */,
 				0D22AB2B2538E7E60079F9E6 /* LaunchScreen.storyboard in Resources */,
 				0D22AB282538E7E60079F9E6 /* Assets.xcassets in Resources */,
+				0DBDAFC9253FAFFD00D3F838 /* README.md in Resources */,
 				0D22AB262538E7E50079F9E6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -191,6 +210,7 @@
 				0DCE2687253935EF009E63C3 /* EditTransactionViewController.swift in Sources */,
 				0D22AB342538E9A10079F9E6 /* TransactionTableViewController.swift in Sources */,
 				0D22AB232538E7E50079F9E6 /* VisualViewController.swift in Sources */,
+				0DBDAFD0253FBA9800D3F838 /* Settings.swift in Sources */,
 				0D22AB492538F90F0079F9E6 /* Transaction.swift in Sources */,
 				0D22AB372538E9D40079F9E6 /* CategoryTableViewController.swift in Sources */,
 				0D22AB1F2538E7E50079F9E6 /* AppDelegate.swift in Sources */,

@@ -23,11 +23,11 @@ protocol CurrencyConverterDelegate {
 
 struct CurrencyConverter {
     let baseURL = "http://api.currencylayer.com/live?&currencies=NZD&access_key="
-    let apiKey = "ca4dc9fa0e9bb3e321819bf90709b023"
+    let apiKey = Settings.apiKey
     var delegate: CurrencyConverterDelegate?
     
     func getRate() {
-        let urlString = "\(baseURL)?apikey=\(apiKey)"
+        let urlString = "\(baseURL)\(apiKey)"
         if let url = URL(string: urlString) {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, response, error) in

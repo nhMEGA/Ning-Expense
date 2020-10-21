@@ -50,11 +50,13 @@ class EditTransactionViewController: UIViewController {
 //MARK: - CurrencyConverterDelegate
 extension EditTransactionViewController: CurrencyConverterDelegate {
     func didSaveTransaction(_ currencyRate: Float) {
-        let category = cm.categories[categoryPicker.selectedRow(inComponent: 0)]
-        let date = datePicker.date.timeIntervalSince1970
-        let amount = Float(amountText.text!)!
-        let transaction = Transaction(category, date, amount)
-        tm.transactions.append(transaction)
+        DispatchQueue.main.async {
+            let category = self.cm.categories[self.categoryPicker.selectedRow(inComponent: 0)]
+            let date = self.datePicker.date.timeIntervalSince1970
+            let amount = Float(self.amountText.text!)!
+            let transaction = Transaction(category, date, amount)
+            self.tm.transactions.append(transaction)
+        }
     }
     
     func didFailWithError(error: Error) {
