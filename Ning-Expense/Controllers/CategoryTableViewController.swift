@@ -48,9 +48,21 @@ class CategoryTableViewController: UITableViewController {
         // Configure the cell...
 
         let cat = cm.categories[indexPath.row]
+        
+        let backgroundColor = cat.color as! UIColor
+        cell.backgroundColor = backgroundColor
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        backgroundColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        let textColor = (red*0.299 + green*0.587 + blue*0.114) > 0.186 ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        cell.textLabel?.textColor = textColor
+        cell.detailTextLabel?.textColor = textColor
         cell.textLabel?.text = cat.name
         cell.detailTextLabel?.text = String(format: "%0.2f", cat.budget)
-        cell.backgroundColor = cat.color as? UIColor
+        
         
         return cell
     }
@@ -91,14 +103,18 @@ class CategoryTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "EditCategory" {
+            let destinationVC = segue.destination as! EditCategoryViewController
+            destinationVC.catIndex = tableView.indexPathForSelectedRow!.row
+        }
     }
-    */
 
 }

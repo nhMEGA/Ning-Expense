@@ -14,9 +14,10 @@ class EditTransactionViewController: UIViewController {
     @IBOutlet weak var transactionCurrencySegment: UISegmentedControl!
     
     var cm = CategoryManager()
-    var transactions = [Transaction]()
+    var tm = TransactionManager()
     var cc = CurrencyConverter()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var traIndex = -1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +26,6 @@ class EditTransactionViewController: UIViewController {
         transactionCategoryPicker.dataSource = self
         transactionCategoryPicker.delegate = self
         cc.delegate = self
-        
-        
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     
@@ -34,6 +33,19 @@ class EditTransactionViewController: UIViewController {
         super.viewWillAppear(animated)
         cm.loadCategories()
         transactionCategoryPicker.reloadAllComponents()
+        
+        if traIndex != -1  {
+            let transaction = tm.transactions[traIndex]
+            let category = transaction.parentCategory!
+            let catIndex = cm.categories.firstIndex(of: category)!
+            transactionCategoryPicker.selectRow(catIndex, inComponent: 0, animated: false)
+            
+            let date = Date(timeIntervalSince1970: transaction.date)
+            transactionDatePicker.setDate(date, animated: false)
+            
+            let amount = transaction.amount
+            transactionAmountText.text = String(format: "%0.2f", amount)
+        }
     }
     
     @IBAction func saveTransaction(_ sender: UIBarButtonItem) {
@@ -63,11 +75,10 @@ class EditTransactionViewController: UIViewController {
 extension EditTransactionViewController: CurrencyConverterDelegate {
     func didSaveTransaction(_ currencyRate: Float) {
         DispatchQueue.main.async {
-            let transaction = Transaction(context: self.context)
+            let transaction = self.traIndex != -1 ? self.tm.transactions[self.traIndex] : Transaction(context: self.context)
             transaction.parentCategory = self.cm.categories[self.transactionCategoryPicker.selectedRow(inComponent: 0)]
             transaction.date = self.transactionDatePicker.date.timeIntervalSince1970
             transaction.amount = Float(self.transactionAmountText.text!)! * currencyRate
-            self.transactions.append(transaction)
             self.navigationController?.popToRootViewController(animated: true)
             do {
                 try self.context.save()

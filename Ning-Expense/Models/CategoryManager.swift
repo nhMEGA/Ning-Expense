@@ -20,6 +20,7 @@ struct CategoryManager {
         let request : NSFetchRequest<Category> = Category.fetchRequest()
         do{
             categories = try context.fetch(request)
+            categories.sort(by: {$0.budget > $1.budget})
         } catch {
             print("Error loading categories \(error)")
         }

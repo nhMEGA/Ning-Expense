@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 
 class TransactionTableViewController: UITableViewController {
-    var transactions = [Transaction]()
+    var tm = TransactionManager()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
@@ -20,12 +20,12 @@ class TransactionTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        loadTransactions()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadTransactions()
+        tm.loadTransactions()
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -37,7 +37,7 @@ class TransactionTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return transactions.count
+        return tm.transactions.count
     }
 
     
@@ -46,23 +46,50 @@ class TransactionTableViewController: UITableViewController {
 
         // Configure the cell...
 
-        let tra = transactions[indexPath.row]
+        let tra = tm.transactions[indexPath.row]
         let cat = tra.parentCategory
         let date = Date(timeIntervalSince1970: tra.date)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
+        
+        let backgroundColor = cat!.color as! UIColor
+        cell.backgroundColor = backgroundColor
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+        backgroundColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        let textColor = (red*0.299 + green*0.587 + blue*0.114) > 0.186 ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        cell.textLabel?.textColor = textColor
+        cell.detailTextLabel?.textColor = textColor
         cell.textLabel?.text = cat?.name
         cell.detailTextLabel?.text = dateFormatter.string(from: date)
-        cell.backgroundColor = cat?.color as? UIColor
         
         let label = UILabel.init(frame: CGRect(x:0,y:0,width:100,height:20))
         label.textAlignment = NSTextAlignment.right
         label.text = String(format: "%0.2f", tra.amount)
+        label.textColor = textColor
         cell.accessoryView = label
         
         return cell
     }
+    
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if segue.identifier == "EditTransaction" {
+            let destinationVC = segue.destination as! EditTransactionViewController
+            destinationVC.traIndex = tableView.indexPathForSelectedRow!.row
+        }
+    }
+    
+
     
 
     /*
@@ -99,25 +126,4 @@ class TransactionTableViewController: UITableViewController {
         return true
     }
     */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    
-    func loadTransactions() {
-        let request : NSFetchRequest<Transaction> = Transaction.fetchRequest()
-        do{
-            transactions = try context.fetch(request)
-        } catch {
-            print("Error loading transactions \(error)")
-        }
-        tableView.reloadData()
-    }
 }
