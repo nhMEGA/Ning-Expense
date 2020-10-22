@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,9 +15,10 @@
 		0D22AB2B2538E7E60079F9E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D22AB292538E7E60079F9E6 /* LaunchScreen.storyboard */; };
 		0D22AB342538E9A10079F9E6 /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D22AB332538E9A10079F9E6 /* TransactionTableViewController.swift */; };
 		0D22AB372538E9D40079F9E6 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D22AB362538E9D40079F9E6 /* CategoryTableViewController.swift */; };
-		0D22AB492538F90F0079F9E6 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D22AB482538F90F0079F9E6 /* Transaction.swift */; };
-		0D22AB4C2538F9590079F9E6 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D22AB4B2538F9590079F9E6 /* Category.swift */; };
 		0D53D935253951D500B34B77 /* CurrencyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D53D934253951D500B34B77 /* CurrencyConverter.swift */; };
+		0DB2B9CB25403AE7003F6187 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2B9C925403AE7003F6187 /* DataModel.xcdatamodeld */; };
+		0DB2B9F32540D0A6003F6187 /* EditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2B9F22540D0A6003F6187 /* EditCategoryViewController.swift */; };
+		0DB2B9F625410DFB003F6187 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2B9F525410DFB003F6187 /* CategoryManager.swift */; };
 		0DBDAFC9253FAFFD00D3F838 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0DBDAFC8253FAFFD00D3F838 /* README.md */; };
 		0DBDAFCC253FB84200D3F838 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0DBDAFCB253FB84200D3F838 /* .gitignore */; };
 		0DBDAFD0253FBA9800D3F838 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDAFCF253FBA9800D3F838 /* Settings.swift */; };
@@ -36,9 +37,10 @@
 		0D22AB2C2538E7E60079F9E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D22AB332538E9A10079F9E6 /* TransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
 		0D22AB362538E9D40079F9E6 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
-		0D22AB482538F90F0079F9E6 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
-		0D22AB4B2538F9590079F9E6 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		0D53D934253951D500B34B77 /* CurrencyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverter.swift; sourceTree = "<group>"; };
+		0DB2B9CA25403AE7003F6187 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		0DB2B9F22540D0A6003F6187 /* EditCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryViewController.swift; sourceTree = "<group>"; };
+		0DB2B9F525410DFB003F6187 /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		0DBDAFC8253FAFFD00D3F838 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0DBDAFCB253FB84200D3F838 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0DBDAFCF253FBA9800D3F838 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				0D22AB332538E9A10079F9E6 /* TransactionTableViewController.swift */,
 				0D22AB362538E9D40079F9E6 /* CategoryTableViewController.swift */,
 				0DCE2686253935EF009E63C3 /* EditTransactionViewController.swift */,
+				0DB2B9F22540D0A6003F6187 /* EditCategoryViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -126,9 +129,9 @@
 		0D22AB462538F8EB0079F9E6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0D22AB482538F90F0079F9E6 /* Transaction.swift */,
-				0D22AB4B2538F9590079F9E6 /* Category.swift */,
 				0D53D934253951D500B34B77 /* CurrencyConverter.swift */,
+				0DB2B9C925403AE7003F6187 /* DataModel.xcdatamodeld */,
+				0DB2B9F525410DFB003F6187 /* CategoryManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -155,7 +158,6 @@
 				C0034817602B9860F723F050 /* Pods-Ning-Expense.debug.xcconfig */,
 				20EF5EADA6F500E2C5635533 /* Pods-Ning-Expense.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -275,16 +277,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DB2B9F32540D0A6003F6187 /* EditCategoryViewController.swift in Sources */,
+				0DB2B9CB25403AE7003F6187 /* DataModel.xcdatamodeld in Sources */,
 				0D53D935253951D500B34B77 /* CurrencyConverter.swift in Sources */,
 				0DCE2687253935EF009E63C3 /* EditTransactionViewController.swift in Sources */,
 				0D22AB342538E9A10079F9E6 /* TransactionTableViewController.swift in Sources */,
+				0DB2B9F625410DFB003F6187 /* CategoryManager.swift in Sources */,
 				0D22AB232538E7E50079F9E6 /* VisualViewController.swift in Sources */,
 				0DBDAFD0253FBA9800D3F838 /* Settings.swift in Sources */,
-				0D22AB492538F90F0079F9E6 /* Transaction.swift in Sources */,
 				0D22AB372538E9D40079F9E6 /* CategoryTableViewController.swift in Sources */,
 				0D22AB1F2538E7E50079F9E6 /* AppDelegate.swift in Sources */,
 				0D22AB212538E7E50079F9E6 /* SceneDelegate.swift in Sources */,
-				0D22AB4C2538F9590079F9E6 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +489,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0DB2B9C925403AE7003F6187 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0DB2B9CA25403AE7003F6187 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 0DB2B9CA25403AE7003F6187 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0D22AB132538E7E50079F9E6 /* Project object */;
 }

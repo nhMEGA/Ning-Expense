@@ -8,29 +8,41 @@
 import UIKit
 
 class EditTransactionViewController: UIViewController {
-    @IBOutlet weak var categoryPicker: UIPickerView!
-    @IBOutlet weak var datePicker: UIDatePicker!
-    @IBOutlet weak var amountText: UITextField!
-    @IBOutlet weak var currencySegment: UISegmentedControl!
+    @IBOutlet weak var transactionCategoryPicker: UIPickerView!
+    @IBOutlet weak var transactionDatePicker: UIDatePicker!
+    @IBOutlet weak var transactionAmountText: UITextField!
+    @IBOutlet weak var transactionCurrencySegment: UISegmentedControl!
     
-    var cm = CategoryManager.singletonCM
-    var tm = TransactionManager.singletonTM
+    var cm = CategoryManager()
+    var transactions = [Transaction]()
     var cc = CurrencyConverter()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        categoryPicker.dataSource = self
-        categoryPicker.delegate = self
-        cc.delegate = self
-
+        
         // Do any additional setup after loading the view.
+        transactionCategoryPicker.dataSource = self
+        transactionCategoryPicker.delegate = self
+        cc.delegate = self
+        
+        
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     
-    @IBAction func savePressed(_ sender: UIBarButtonItem) {
-        if Float(amountText.text ?? "") != nil {
-            let currency = currencySegment.selectedSegmentIndex == 0 ? "NZD" : "USD"
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        cm.loadCategories()
+        transactionCategoryPicker.reloadAllComponents()
+    }
+    
+    @IBAction func saveTransaction(_ sender: UIBarButtonItem) {
+        if Float(transactionAmountText.text ?? "") != nil {
+            let currency = transactionCurrencySegment.selectedSegmentIndex == 0 ? "NZD" : "USD"
             if currency == "USD" {
                 cc.getRate()
+            } else {
+                didSaveTransaction(1)
             }
         }
     }
@@ -51,18 +63,23 @@ class EditTransactionViewController: UIViewController {
 extension EditTransactionViewController: CurrencyConverterDelegate {
     func didSaveTransaction(_ currencyRate: Float) {
         DispatchQueue.main.async {
-            let category = self.cm.categories[self.categoryPicker.selectedRow(inComponent: 0)]
-            let date = self.datePicker.date.timeIntervalSince1970
-            let amount = Float(self.amountText.text!)!
-            let transaction = Transaction(category, date, amount)
-            self.tm.transactions.append(transaction)
+            let transaction = Transaction(context: self.context)
+            transaction.parentCategory = self.cm.categories[self.transactionCategoryPicker.selectedRow(inComponent: 0)]
+            transaction.date = self.transactionDatePicker.date.timeIntervalSince1970
+            transaction.amount = Float(self.transactionAmountText.text!)! * currencyRate
+            self.transactions.append(transaction)
+            self.navigationController?.popToRootViewController(animated: true)
+            do {
+                try self.context.save()
+            } catch {
+                self.didFailWithError(error: error)
+            }
         }
     }
     
     func didFailWithError(error: Error) {
         print(error)
     }
-    
     
 }
 

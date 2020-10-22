@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
 class TransactionTableViewController: UITableViewController {
-    var tm = TransactionManager.singletonTM
+    var transactions = [Transaction]()
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +20,12 @@ class TransactionTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        loadTransactions()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadTransactions()
     }
 
     // MARK: - Table view data source
@@ -29,20 +37,29 @@ class TransactionTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return tm.transactions.count
+        return transactions.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath)
 
         // Configure the cell...
 
-        let tra = tm.transactions[indexPath.row]
-        let cat = tra.category
-        cell.textLabel?.text = cat.name
-        cell.detailTextLabel?.text = String(tra.amount)
-        cell.backgroundColor = cat.color
+        let tra = transactions[indexPath.row]
+        let cat = tra.parentCategory
+        let date = Date(timeIntervalSince1970: tra.date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        cell.textLabel?.text = cat?.name
+        cell.detailTextLabel?.text = dateFormatter.string(from: date)
+        cell.backgroundColor = cat?.color as? UIColor
+        
+        let label = UILabel.init(frame: CGRect(x:0,y:0,width:100,height:20))
+        label.textAlignment = NSTextAlignment.right
+        label.text = String(format: "%0.2f", tra.amount)
+        cell.accessoryView = label
         
         return cell
     }
@@ -93,4 +110,14 @@ class TransactionTableViewController: UITableViewController {
     }
     */
 
+    
+    func loadTransactions() {
+        let request : NSFetchRequest<Transaction> = Transaction.fetchRequest()
+        do{
+            transactions = try context.fetch(request)
+        } catch {
+            print("Error loading transactions \(error)")
+        }
+        tableView.reloadData()
+    }
 }
