@@ -10,13 +10,18 @@ import UIKit
 class EditCategoryViewController: UIViewController {
     @IBOutlet weak var categoryNameText: UITextField!
     @IBOutlet weak var categoryBudgetText: UITextField!
+    @IBOutlet weak var categoryColorView: UIView!
+    @IBOutlet weak var colorStackView: UIStackView!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var color: UIColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+    var colorWell: UIColorWell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        addColorWell()
     }
     
     @IBAction func saveCategory(_ sender: UIBarButtonItem) {
@@ -24,7 +29,7 @@ class EditCategoryViewController: UIViewController {
             let category = Category(context: context)
             category.budget = budget
             category.name = name
-            category.color = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+            category.color = color
             navigationController?.popViewController(animated: true)
             do {
                 try self.context.save()
@@ -32,6 +37,19 @@ class EditCategoryViewController: UIViewController {
                 print(error)
             }
         }
+    }
+    
+    func addColorWell() {
+        colorWell = UIColorWell(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        view.addSubview(colorWell)
+        colorWell.center = view.center
+        colorWell.title = "Select Color"
+        colorWell.selectedColor = color
+        colorWell.addTarget(self, action: #selector(colorWellChanged(_:)), for: .valueChanged)
+    }
+
+    @objc func colorWellChanged(_ sender: Any) {
+        color = colorWell.selectedColor ?? color
     }
     
     /*
