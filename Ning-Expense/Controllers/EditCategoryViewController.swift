@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class EditCategoryViewController: UIViewController {
     @IBOutlet weak var categoryNameText: UITextField!
@@ -45,9 +46,12 @@ class EditCategoryViewController: UIViewController {
     }
     
     func addColorWell() {
-        colorWell = UIColorWell(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        view.addSubview(colorWell)
-        colorWell.center = view.center
+        colorWell = UIColorWell()
+        categoryColorView.addSubview(colorWell)
+//        colorWell.center = categoryColorView.center
+        colorWell.snp.makeConstraints { (make) in
+            make.center.equalTo(categoryColorView)
+        }
         colorWell.title = "Select Color"
         colorWell.selectedColor = color
         colorWell.addTarget(self, action: #selector(colorWellChanged(_:)), for: .valueChanged)
