@@ -77,14 +77,14 @@ extension EditTransactionViewController: CurrencyConverterDelegate {
         DispatchQueue.main.async {
             let transaction = self.traIndex != -1 ? self.tm.transactions[self.traIndex] : Transaction(context: self.context)
             transaction.parentCategory = self.cm.categories[self.transactionCategoryPicker.selectedRow(inComponent: 0)]
+            if self.traIndex != -1{
+                transaction.parentCategory!.used -= transaction.amount
+            }
             transaction.date = self.transactionDatePicker.date.timeIntervalSince1970
             transaction.amount = Float(self.transactionAmountText.text!)! * currencyRate
+            transaction.parentCategory!.used += transaction.amount
             self.navigationController?.popToRootViewController(animated: true)
-            do {
-                try self.context.save()
-            } catch {
-                self.didFailWithError(error: error)
-            }
+            self.tm.saveData()
         }
     }
     

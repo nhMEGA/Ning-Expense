@@ -10,13 +10,13 @@ import CoreData
 
 struct CategoryManager {
     var categories: [Category] = []
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     init() {
         loadCategories()
     }
     
     mutating func loadCategories (){
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let request : NSFetchRequest<Category> = Category.fetchRequest()
         do{
             categories = try context.fetch(request)
@@ -24,6 +24,20 @@ struct CategoryManager {
         } catch {
             print("Error loading categories \(error)")
         }
+    }
+    
+    func saveData() {
+        do {
+          try context.save()
+        } catch {
+           print("Error saving context \(error)")
+        }
+    }
+    
+    mutating func deleteData(_ index:Int) {
+        context.delete(categories[index])
+        saveData()
+        categories.remove(at: index)
     }
 }
 

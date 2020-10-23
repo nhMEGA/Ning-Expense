@@ -4,7 +4,8 @@
         <attribute name="budget" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="color" optional="YES" attributeType="Transformable"/>
         <attribute name="name" attributeType="String"/>
-        <relationship name="kidTransactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="parentCategory" inverseEntity="Transaction"/>
+        <attribute name="used" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="kidTransactions" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Transaction" inverseName="parentCategory" inverseEntity="Transaction"/>
     </entity>
     <entity name="Transaction" representedClassName=".Transaction" syncable="YES" codeGenerationType="class">
         <attribute name="amount" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
@@ -12,7 +13,7 @@
         <relationship name="parentCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="kidTransactions" inverseEntity="Category"/>
     </entity>
     <elements>
-        <element name="Category" positionX="-54" positionY="-9" width="128" height="103"/>
+        <element name="Category" positionX="-54" positionY="-9" width="128" height="118"/>
         <element name="Transaction" positionX="122.3984375" positionY="-6.06640625" width="120.13671875" height="88"/>
     </elements>
 </model>

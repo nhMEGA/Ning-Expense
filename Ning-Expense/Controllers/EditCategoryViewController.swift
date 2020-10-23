@@ -35,17 +35,12 @@ class EditCategoryViewController: UIViewController {
     @IBAction func saveCategory(_ sender: UIBarButtonItem) {
         if let budget = Float(categoryBudgetText.text ?? ""), let name = categoryNameText.text {
             
-            
             let category = catIndex != -1 ? cm.categories[catIndex] : Category(context: context)
             category.budget = budget
             category.name = name
             category.color = color
+            cm.saveData()
             navigationController?.popViewController(animated: true)
-            do {
-                try self.context.save()
-            } catch {
-                print(error)
-            }
         }
     }
     

@@ -20,8 +20,7 @@
 		0DB2B9F32540D0A6003F6187 /* EditCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2B9F22540D0A6003F6187 /* EditCategoryViewController.swift */; };
 		0DB2B9F625410DFB003F6187 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2B9F525410DFB003F6187 /* CategoryManager.swift */; };
 		0DB2B9FA25417E00003F6187 /* TransactionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2B9F925417E00003F6187 /* TransactionManager.swift */; };
-		0DBDAFC9253FAFFD00D3F838 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0DBDAFC8253FAFFD00D3F838 /* README.md */; };
-		0DBDAFCC253FB84200D3F838 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 0DBDAFCB253FB84200D3F838 /* .gitignore */; };
+		0DB2BA0325423375003F6187 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2BA0225423375003F6187 /* DataManager.swift */; };
 		0DBDAFD0253FBA9800D3F838 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDAFCF253FBA9800D3F838 /* Settings.swift */; };
 		0DCE2687253935EF009E63C3 /* EditTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2686253935EF009E63C3 /* EditTransactionViewController.swift */; };
 		56BBE343D5DFF27EF07619E3 /* Pods_Ning_Expense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A9A98DC0EEAAFD61B27240 /* Pods_Ning_Expense.framework */; };
@@ -43,6 +42,7 @@
 		0DB2B9F22540D0A6003F6187 /* EditCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryViewController.swift; sourceTree = "<group>"; };
 		0DB2B9F525410DFB003F6187 /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		0DB2B9F925417E00003F6187 /* TransactionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionManager.swift; sourceTree = "<group>"; };
+		0DB2BA0225423375003F6187 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		0DBDAFC8253FAFFD00D3F838 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		0DBDAFCB253FB84200D3F838 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		0DBDAFCF253FBA9800D3F838 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -135,6 +135,7 @@
 				0DB2B9C925403AE7003F6187 /* DataModel.xcdatamodeld */,
 				0DB2B9F525410DFB003F6187 /* CategoryManager.swift */,
 				0DB2B9F925417E00003F6187 /* TransactionManager.swift */,
+				0DB2BA0225423375003F6187 /* DataManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -223,10 +224,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DBDAFCC253FB84200D3F838 /* .gitignore in Resources */,
 				0D22AB2B2538E7E60079F9E6 /* LaunchScreen.storyboard in Resources */,
 				0D22AB282538E7E60079F9E6 /* Assets.xcassets in Resources */,
-				0DBDAFC9253FAFFD00D3F838 /* README.md in Resources */,
 				0D22AB262538E7E50079F9E6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +290,7 @@
 				0DB2B9FA25417E00003F6187 /* TransactionManager.swift in Sources */,
 				0D22AB372538E9D40079F9E6 /* CategoryTableViewController.swift in Sources */,
 				0D22AB1F2538E7E50079F9E6 /* AppDelegate.swift in Sources */,
+				0DB2BA0325423375003F6187 /* DataManager.swift in Sources */,
 				0D22AB212538E7E50079F9E6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

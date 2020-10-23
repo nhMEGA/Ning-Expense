@@ -11,7 +11,6 @@ import CoreData
 class CategoryTableViewController: UITableViewController {
 
     var cm = CategoryManager()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +20,9 @@ class CategoryTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+//        deleteAllData("Category")
+//        deleteAllData("Transaction")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,44 +51,33 @@ class CategoryTableViewController: UITableViewController {
 
         let cat = cm.categories[indexPath.row]
         
-        let backgroundColor = cat.color as! UIColor
-        cell.backgroundColor = backgroundColor
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        var alpha: CGFloat = 0
-        backgroundColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        let textColor = (red*0.299 + green*0.587 + blue*0.114) > 0.186 ? #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        let progress = cat.used / cat.budget
+        let progressView = UIProgressView(progressViewStyle: .default)
+        progressView.frame = CGRect(x: 230, y: 35, width: 130, height: 130)
+        progressView.progress = progress
+        progressView.progressTintColor = (cat.color as! UIColor)
+        cell.contentView.addSubview(progressView)
         
-        cell.textLabel?.textColor = textColor
-        cell.detailTextLabel?.textColor = textColor
-        cell.textLabel?.text = cat.name
+        let tail = progress >= 1 ? "❗️" : ""
+        cell.textLabel?.text = cat.name!  + tail
         cell.detailTextLabel?.text = String(format: "%0.2f", cat.budget)
-        
-        
         return cell
     }
-    
 
-    /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            cm.deleteData(indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.

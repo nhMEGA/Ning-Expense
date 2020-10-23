@@ -8,22 +8,26 @@
 import UIKit
 import CoreData
 
-struct TransactionManager {
+class TransactionManager: DataManager {
     var transactions: [Transaction] = []
-
     init() {
-        loadTransactions()
+        super.init("Transaction")
+        transactions = data as! [Transaction]
+        sortData()
     }
     
-    mutating func loadTransactions (){
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let request : NSFetchRequest<Transaction> = Transaction.fetchRequest()
-        do{
-            transactions = try context.fetch(request)
-            transactions.sort(by: {$0.date < $1.date})
-        } catch {
-            print("Error loading transactions \(error)")
-        }
+    func sortData() {
+        transactions.sort(by: {$0.date < $1.date})
+    }
+    override func loadData() {
+        super.loadData()
+        transactions = data as! [Transaction]
+        sortData()
+    }
+    
+    override func deleteData(_ index:Int) {
+        transactions[index].parentCategory?.used -= transactions[index].amount
+        super.deleteData(index)
     }
 }
 
