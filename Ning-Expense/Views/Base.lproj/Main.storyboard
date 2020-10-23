@@ -40,9 +40,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="ucC-Nz-q50" kind="show" identifier="EditCategory" id="jCE-0u-ith"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -52,11 +49,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Category" id="4HT-jz-XFQ"/>
                     <navigationItem key="navigationItem" title="Category" id="HzV-R2-Wjv">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="b28-Vh-LVC">
-                            <connections>
-                                <segue destination="ucC-Nz-q50" kind="show" identifier="AddCategory" id="4P5-jc-BzD"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="b28-Vh-LVC"/>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
@@ -67,7 +60,7 @@
         <!--Edit Category View-->
         <scene sceneID="HHH-ca-vYI">
             <objects>
-                <viewController id="ucC-Nz-q50" userLabel="Edit Category View" customClass="EditCategoryViewController" customModule="Ning_Expense" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditCategoryViewController" id="ucC-Nz-q50" userLabel="Edit Category View" customClass="EditCategoryViewController" customModule="Ning_Expense" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iPF-LI-9BZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -445,7 +438,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="o8v-H0-mO5"/>
-        <segue reference="jCE-0u-ith"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
