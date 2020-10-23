@@ -21,13 +21,11 @@ class CategoryTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-//        deleteAllData("Category")
-//        deleteAllData("Transaction")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        cm.loadCategories()
+        cm.loadData()
         tableView.reloadData()
     }
 
@@ -83,8 +81,9 @@ class CategoryTableViewController: UITableViewController {
         guard let editVC = storyboard?.instantiateViewController(withIdentifier: "EditCategoryViewController") as? EditCategoryViewController else {
             return
         }
+//        let editVC = EditCategoryCodeViewController()
         editVC.catIndex = indexPath.row
 
-        navigationController?.pushViewController(editVC, animated: true)
+//        navigationController?.pushViewController(editVC, animated: true)
     }
 }

@@ -31,7 +31,7 @@ class EditTransactionViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        cm.loadCategories()
+        cm.loadData()
         transactionCategoryPicker.reloadAllComponents()
         
         if traIndex != -1  {

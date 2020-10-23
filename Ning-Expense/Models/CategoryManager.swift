@@ -8,36 +8,29 @@
 import UIKit
 import CoreData
 
-struct CategoryManager {
+class CategoryManager: DataManager {
     var categories: [Category] = []
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     init() {
-        loadCategories()
+        super.init("Category")
+        categories = data as! [Category]
+        sortData()
+    }
+
+    func sortData() {
+        categories.sort(by: {$0.budget > $1.budget})
     }
     
-    mutating func loadCategories (){
-        let request : NSFetchRequest<Category> = Category.fetchRequest()
-        do{
-            categories = try context.fetch(request)
-            categories.sort(by: {$0.budget > $1.budget})
-        } catch {
-            print("Error loading categories \(error)")
-        }
+    override func loadData() {
+        super.loadData()
+        categories = data as! [Category]
+        sortData()
     }
     
-    func saveData() {
-        do {
-          try context.save()
-        } catch {
-           print("Error saving context \(error)")
-        }
-    }
-    
-    mutating func deleteData(_ index:Int) {
-        context.delete(categories[index])
-        saveData()
+    override func deleteData(_ index: Int) {
         categories.remove(at: index)
+        super.deleteData(index)
     }
+    
 }
 

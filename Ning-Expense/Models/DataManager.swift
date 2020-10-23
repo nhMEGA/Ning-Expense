@@ -27,18 +27,6 @@ class DataManager {
         }
     }
     
-//    func sortData() {
-//        if entity == "Category" {
-//            var newdata = data as! [Category]
-//            newdata.sort(by: {$0.budget > $1.budget})
-//            data = newdata
-//        } else {
-//            var newdata = data as! [Transaction]
-//            newdata.sort(by: {$0.date < $1.date})
-//            data = newdata
-//        }
-//    }
-    
     func saveData() {
         do {
           try context.save()
@@ -55,17 +43,3 @@ class DataManager {
     
 }
 
-func deleteAllData(_ entity:String) {
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity)
-    fetchRequest.returnsObjectsAsFaults = false
-    do {
-        let results = try context.fetch(fetchRequest)
-        for object in results {
-            guard let objectData = object as? NSManagedObject else {continue}
-            context.delete(objectData)
-        }
-    } catch let error {
-        print("Detele all data in \(entity) error :", error)
-    }
-}

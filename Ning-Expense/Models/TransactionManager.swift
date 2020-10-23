@@ -19,6 +19,7 @@ class TransactionManager: DataManager {
     func sortData() {
         transactions.sort(by: {$0.date < $1.date})
     }
+    
     override func loadData() {
         super.loadData()
         transactions = data as! [Transaction]
@@ -27,6 +28,7 @@ class TransactionManager: DataManager {
     
     override func deleteData(_ index:Int) {
         transactions[index].parentCategory?.used -= transactions[index].amount
+        transactions.remove(at: index)
         super.deleteData(index)
     }
 }
