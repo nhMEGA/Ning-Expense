@@ -21,6 +21,7 @@
 		0DB2B9F625410DFB003F6187 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2B9F525410DFB003F6187 /* CategoryManager.swift */; };
 		0DB2B9FA25417E00003F6187 /* TransactionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2B9F925417E00003F6187 /* TransactionManager.swift */; };
 		0DB2BA0325423375003F6187 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2BA0225423375003F6187 /* DataManager.swift */; };
+		0DB2BA08254284A1003F6187 /* EditCategoryCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB2BA07254284A1003F6187 /* EditCategoryCodeViewController.swift */; };
 		0DBDAFD0253FBA9800D3F838 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBDAFCF253FBA9800D3F838 /* Settings.swift */; };
 		0DCE2687253935EF009E63C3 /* EditTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DCE2686253935EF009E63C3 /* EditTransactionViewController.swift */; };
 		56BBE343D5DFF27EF07619E3 /* Pods_Ning_Expense.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9A9A98DC0EEAAFD61B27240 /* Pods_Ning_Expense.framework */; };
@@ -43,8 +44,7 @@
 		0DB2B9F525410DFB003F6187 /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		0DB2B9F925417E00003F6187 /* TransactionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionManager.swift; sourceTree = "<group>"; };
 		0DB2BA0225423375003F6187 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		0DBDAFC8253FAFFD00D3F838 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		0DBDAFCB253FB84200D3F838 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		0DB2BA07254284A1003F6187 /* EditCategoryCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCategoryCodeViewController.swift; sourceTree = "<group>"; };
 		0DBDAFCF253FBA9800D3F838 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0DCE2686253935EF009E63C3 /* EditTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTransactionViewController.swift; sourceTree = "<group>"; };
 		20EF5EADA6F500E2C5635533 /* Pods-Ning-Expense.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Ning-Expense.release.xcconfig"; path = "Target Support Files/Pods-Ning-Expense/Pods-Ning-Expense.release.xcconfig"; sourceTree = "<group>"; };
@@ -67,8 +67,6 @@
 		0D22AB122538E7E50079F9E6 = {
 			isa = PBXGroup;
 			children = (
-				0DBDAFCB253FB84200D3F838 /* .gitignore */,
-				0DBDAFC8253FAFFD00D3F838 /* README.md */,
 				0D22AB1D2538E7E50079F9E6 /* Ning-Expense */,
 				0D22AB1C2538E7E50079F9E6 /* Products */,
 				B2EDC24AC52AB84C8570C49F /* Pods */,
@@ -107,6 +105,7 @@
 				0D22AB362538E9D40079F9E6 /* CategoryTableViewController.swift */,
 				0DCE2686253935EF009E63C3 /* EditTransactionViewController.swift */,
 				0DB2B9F22540D0A6003F6187 /* EditCategoryViewController.swift */,
+				0DB2BA07254284A1003F6187 /* EditCategoryCodeViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -280,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0DB2B9F32540D0A6003F6187 /* EditCategoryViewController.swift in Sources */,
+				0DB2BA08254284A1003F6187 /* EditCategoryCodeViewController.swift in Sources */,
 				0DB2B9CB25403AE7003F6187 /* DataModel.xcdatamodeld in Sources */,
 				0D53D935253951D500B34B77 /* CurrencyConverter.swift in Sources */,
 				0DCE2687253935EF009E63C3 /* EditTransactionViewController.swift in Sources */,

@@ -21,6 +21,8 @@ class CategoryTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
+        navigationItem.rightBarButtonItem?.target = self
+        navigationItem.rightBarButtonItem?.action = #selector(openEditCategory)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,12 +80,22 @@ class CategoryTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let editVC = storyboard?.instantiateViewController(withIdentifier: "EditCategoryViewController") as? EditCategoryViewController else {
-            return
+//        guard let editVC = storyboard?.instantiateViewController(withIdentifier: "EditCategoryViewController") as? EditCategoryViewController else {
+//            return
+//        }
+//        editVC.catIndex = indexPath.row
+        
+        
+        openEditCategory(indexPath.row)
+    }
+    
+    @objc func openEditCategory(_ parameter: Any) {
+        let editVC = EditCategoryCodeViewController()
+        if parameter as! NSObject == navigationItem.rightBarButtonItem! {
+            editVC.catIndex = -1
+        } else {
+            editVC.catIndex = parameter as! Int
         }
-//        let editVC = EditCategoryCodeViewController()
-        editVC.catIndex = indexPath.row
-
-//        navigationController?.pushViewController(editVC, animated: true)
+        navigationController?.pushViewController(editVC, animated: true)
     }
 }

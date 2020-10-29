@@ -159,21 +159,6 @@
             </objects>
             <point key="canvasLocation" x="2178" y="203"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="g5a-GX-OdY">
-            <objects>
-                <viewController id="N5I-uJ-yDn" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="SEG-WI-Emu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="xbv-SE-usn"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qxa-lq-tyI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3076" y="214"/>
-        </scene>
         <!--Edit Transaction View-->
         <scene sceneID="wa6-ud-RK8">
             <objects>

@@ -12,11 +12,10 @@ class EditCategoryViewController: UIViewController {
     @IBOutlet weak var categoryNameText: UITextField!
     @IBOutlet weak var categoryBudgetText: UITextField!
     @IBOutlet weak var categoryColorView: UIView!
-    @IBOutlet weak var colorStackView: UIStackView!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var color: UIColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-    var colorWell: UIColorWell!
+    var categoryColorWell: UIColorWell!
     var cm = CategoryManager()
     var catIndex = -1
     
@@ -29,7 +28,7 @@ class EditCategoryViewController: UIViewController {
             let category = cm.categories[catIndex]
             categoryNameText.text = category.name
             categoryBudgetText.text = String(format: "%0.2f", category.budget)
-            colorWell.selectedColor = (category.color as! UIColor)
+            categoryColorWell.selectedColor = (category.color as! UIColor)
         }
     }
     
@@ -46,19 +45,18 @@ class EditCategoryViewController: UIViewController {
     }
     
     func addColorWell() {
-        colorWell = UIColorWell()
-        categoryColorView.addSubview(colorWell)
-//        colorWell.center = categoryColorView.center
-        colorWell.snp.makeConstraints { (make) in
+        categoryColorWell = UIColorWell()
+        categoryColorView.addSubview(categoryColorWell)
+        categoryColorWell.snp.makeConstraints { (make) in
             make.center.equalTo(categoryColorView)
         }
-        colorWell.title = "Select Color"
-        colorWell.selectedColor = color
-        colorWell.addTarget(self, action: #selector(colorWellChanged(_:)), for: .valueChanged)
+        categoryColorWell.title = "Select Color"
+        categoryColorWell.selectedColor = color
+        categoryColorWell.addTarget(self, action: #selector(colorWellChanged(_:)), for: .valueChanged)
     }
 
     @objc func colorWellChanged(_ sender: Any) {
-        color = colorWell.selectedColor ?? color
+        color = categoryColorWell.selectedColor ?? color
     }
     
     /*
